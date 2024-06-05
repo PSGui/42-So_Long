@@ -1,0 +1,35 @@
+#include "so_long_utils.h"
+#include "so_long.h"
+
+
+
+void    hook(data_t *data, int action, int mask, int (*f)())
+{
+        mlx_hook(data->mlx_window, action, mask, f, data);
+}
+
+void    key_pressed(int key_numeral, data_t *data)
+{
+        data->player.mem = 0;
+        if (key_numeral == ESC)
+		// Funcao para terminar o jogo e fechar a janela
+	else if (key_numeral == UP)
+		go_up(data);
+	else if (key_numeral == DOWN)
+		go_down(data);
+	else if (key_numeral == LEFT)
+		go_left(data);
+	else if (key_numeral == RIGHT)
+		go_right(data);
+	return (0);
+}
+
+void    close_it(data_t *data)
+{
+        
+}
+
+void    retore_game(data_t *data)
+{
+        
+}
