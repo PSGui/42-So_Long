@@ -1,8 +1,6 @@
 #include "so_long_utils.h"
 #include "so_long.h"
 
-
-
 void    hook(data_t *data, int action, int mask, int (*f)())
 {
         mlx_hook(data->mlx_window, action, mask, f, data);
@@ -26,10 +24,19 @@ void    key_pressed(int key_numeral, data_t *data)
 
 void    close_it(data_t *data)
 {
-        
+        if (data)
+	{
+		if (data->mlx_connection && data->mlx_window)
+			mlx_destroy_window(data->mlx_connection, data->mlx_window);
+		free(data); 
+	}
+	exit (0);
 }
 
 void    retore_game(data_t *data)
 {
-        
+        if (data)
+	{
+		
+	}
 }

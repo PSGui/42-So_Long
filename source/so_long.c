@@ -45,4 +45,5 @@ void    start_game(data_t *data, char *map_path)
         hook(data, DESTROY_NOTIFY, NO_EVENT_MASK, close_it);
         hook(data, EXPOSE, EXPOSURE_MASK, restore_game);
         mlx_loop(data->mlx_connection);
+        free(data);
 }

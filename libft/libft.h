@@ -19,6 +19,12 @@
 # include <stdio.h>
 # include <ctype.h>
 # include <stddef.h>
+# include <stdarg.h>
+# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 int		ft_atoi(const char *str);
 int		ft_isalnum(int a);
@@ -55,5 +61,21 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+
+// 
+
+int		ft_printf(const char *str, ...);
+void	ft_formatspecifier(char specifier, va_list args, int *contagem);
+void	ft_char(char c, int *contagem);
+void	ft_hexa(unsigned int nbr, char uplow, int *contagem);
+void	ft_nbr(int n, int *contagem);
+void	ft_str(char *s, int *contagem);
+void	ft_unsigned(unsigned int n, int *contagem);
+void	ft_pointer(unsigned long nbr, int *contagem);
+
+//
+
+char	*get_next_line(int fd);
+void	*ft_bzero(void *ptr, size_t x);
 
 #endif
