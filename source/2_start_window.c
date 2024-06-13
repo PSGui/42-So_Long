@@ -19,7 +19,7 @@ void    start_window(data_t *data)
                 data->xy.y = data->grid.height * SPRITES;
                 data->mlx_window = mlx_new_window(data->mlx_connection,
                 data->xy.x, data->xy.y, WINDOW_NAME);
-                if (!data->mlx_window == NULL )
+                if ((!data->mlx_window) == NULL)
                         end_game_handler(data, WINDOW_ERROR);
         }
 }

@@ -7,7 +7,6 @@ void    start_map(data_t *data, char *map_path)
 
         fd = open_map_file(map_path);
         read_map_file(data, fd);
-        data->dim.width = val_map_lenght(data->grid.map, data);
         close(fd);
         return ;
 }

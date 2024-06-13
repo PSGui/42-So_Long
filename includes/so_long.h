@@ -20,6 +20,10 @@
 
 // All function prototypes are organized by the order that they appear in the "start_game" function located on the so_long.c file
 
+// So_long
+
+void    start_game(data_t *data, char *map_path);
+
 // Start_map
 
 void            start_map(data_t *data, char *map_path);
@@ -38,12 +42,12 @@ sprite_t        load_sprite(void *ptr, char *path);
 
 // Load_images
 
-void            get_sprite_image(data_t *data);
+void            load_images(data_t *data);
 sprite_t        load_sprite(void *ptr, char *path);
 
 // Check_map
 
-void            check_map_lines_1by1(data_t *data);
+void            check_map(data_t *data);
 void            check_map_errors(data_t *data, int y, int x);
 bool	        walls(data_t *data, int y, int x);
 bool	        rectangular(data_t *data);
@@ -51,15 +55,26 @@ bool	        valid_game_element(data_t *data, int y, int x);
 
 // Place_sprite
 
-void    check_sprites(data_t *data, int y, int x);
+void    place_sprites(data_t *data, int y, int x);
 
 // Hook_handler
 
-void    hook(data_t *data, int action, int mask, int (*f)());
-void    key_pressed(int key_numeral, data_t *data);
-void    close_it(data_t *data);
-void    retore_game(data_t *data);
+void            hook(data_t *data, int action, int mask, int (*f)());
+void            key_pressed(int key_numeral, data_t *data);
+void            close_it(data_t *data);
+void            retore_game(data_t *data);
 
 // Movements
+
+void    go_up(data_t *data);
+void    go_down(data_t *data);
+void    go_left(data_t *data);
+void    go_right(data_t *data);
+
+// Stop_game
+
+void            end_game_handler(data_t *data, int cause);
+void            destroy_images(data_t *data);
+void	        free_map(data_t	*data);
 
 #endif

@@ -1,7 +1,7 @@
 #include "../includes/so_long_utils.h"
 #include "../includes/so_long.h"
 
-void    check_sprites(data_t *data, int y, int x)
+void    place_sprites(data_t *data, int y, int x)
 {
         if (data->grid.map[y][x] == 'E')
 	{

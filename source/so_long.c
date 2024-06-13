@@ -25,7 +25,7 @@ int     main(int argc, char *argv[])
         return (0);
 }
 
-static bool	check_ber_file(const char *map_name)
+bool	check_ber_file(const char *map_name)
 {
 	char	*string;
 

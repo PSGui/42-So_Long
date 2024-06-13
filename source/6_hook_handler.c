@@ -19,7 +19,7 @@ void    key_pressed(int key_numeral, data_t *data)
 		go_left(data);
 	else if (key_numeral == RIGHT)
 		go_right(data);
-	return (0);
+	return ;
 }
 
 void    close_it(data_t *data)
