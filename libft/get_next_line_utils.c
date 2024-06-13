@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 void	*ft_bzero(void *ptr, size_t x)
 {
@@ -27,7 +27,7 @@ void	*ft_bzero(void *ptr, size_t x)
 	return (ptr);
 }
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -39,43 +39,46 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_strchr(char *str, char c)
+char	*ft_strchr(const char *str, int r)
 {
-	int	i;
+	int		i;
+	char	*p;
 
-	if (!str)
-		return (0);
+	p = (char *)str;
 	i = 0;
-	while (str[i] != '\0')
+	while ((unsigned char)str[i] != (unsigned char)r)
 	{
-		if (str[i] == c)
-			return (1); 
+		if (!str[i])
+			return (0);
 		i++;
+		p++;
 	}
-	return (0);
+	return (p);
 }
 
-char	*ft_strjoin(char *str, char *buffer)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str_join;
-	size_t	size;
-	int		i;
-	int		j;
+	size_t	len1;
+	size_t	len2;
+	size_t	i;
+	char	*mem;
 
-	size = ft_strlen(str) + ft_strlen(buffer);
-	str_join = malloc((size + 1) * sizeof(char));
-	if (!str_join)
-		return (NULL);
+	len1 = 0;
+	len2 = 0;
 	i = 0;
-	while (str && str[i])
-	{
-		str_join[i] = str[i];
-		i++;
-	}
-	j = 0;
-	while (buffer && buffer[j])
-		str_join[i++] = buffer[j++];
-	str_join[i] = '\0';
-	free(str);
-	return (str_join);
+	if (!(s1 && s2))
+		return (0);
+	while (s1[len1])
+		len1++;
+	while (s2[len2])
+		len2++;
+	mem = (char *)malloc((len1 + len2 + 1) * sizeof(char));
+	if (!mem)
+		return (0);
+	while (*s1)
+		mem[i++] = *s1++;
+	while (*s2)
+		mem[i++] = *s2++;
+	mem[i] = '\0';
+	return (mem);
 }

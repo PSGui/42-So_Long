@@ -1,5 +1,5 @@
-#include "so_long_utils.h"
-#include "so_long.h"
+#include "../includes/so_long_utils.h"
+#include "../includes/so_long.h"
 
 void    check_sprites(data_t *data, int y, int x)
 {

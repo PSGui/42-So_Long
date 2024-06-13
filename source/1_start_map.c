@@ -1,5 +1,5 @@
-#include "so_long_utils.h"
-#include "so_long.h"
+#include "../includes/so_long_utils.h"
+#include "../includes/so_long.h"
 
 void    start_map(data_t *data, char *map_path)
 {
@@ -34,7 +34,7 @@ void    read_map_file(data_t *data, int fd)
         while (fd)
         {
                 data->dim.line_read = get_next_line(fd);
-                if (data->dim.height = NULL)
+                if (data->dim.height == NULL)
                         break ;
                 str = reconstruct_map(str, data->dim.line_read);
                 free(data->dim.line_read);
@@ -46,7 +46,7 @@ void    read_map_file(data_t *data, int fd)
         {
                 ft_printf("Error while reading map file. Please try again or provide a different map");
                 free(str);
-                return (ERROR);
+                return ;
         }
         free(str);
         return ;
@@ -83,7 +83,7 @@ void     object_counter(data_t *data, char *map_string)
         {
                 free(map_string);
                 ft_printf("Invalid map type. Make sure it has at least 3 lines!");
-                //Fazer função para lidar com fim do jogo!
+                end_game_handler(data, INVALID_MAP);
         }
         while(map_string[i] != '\0')
         {
@@ -105,7 +105,7 @@ void    check_counter_values(data_t *data, char *map_string)
         data->i.player_start == 1 && data->i.free_space > 0))
         {
                 free(map_string);
-                //Fazer função para lidar com fim do jogo!
+                end_game_handler(data, INVALID_MAP);
         }
 }
 

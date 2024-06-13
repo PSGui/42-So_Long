@@ -6,7 +6,7 @@ LIBFT_DIR = libft/
 MLX_DIR = ./mlx
 MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
-SRCS = *.c
+SRCS = source/*.c
 OBJS = $(SRCS:.c=.o)
 INCLUDES = -I/usr/include -Imlx
 

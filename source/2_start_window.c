@@ -1,17 +1,17 @@
-#include "so_long_utils.h"
-#include "so_long.h"
+#include "../includes/so_long_utils.h"
+#include "../includes/so_long.h"
 
 void    start_window(data_t *data)
 {
         data->mlx_connection = mlx_init();
-        if (data->mlx_connection = NULL)
-                return (ERROR);
+        if (data->mlx_connection == NULL)
+                end_game_handler(data, CONNECTION_ERROR);
         if (invalid_game_plot(data))
         {
                 free_map(data);
                 mlx_destroy_display(data->mlx_connection);
                 free(data->mlx_connection);
-                end_game_handler(); // Fazer a funcao para lidar com varias situacoes de fim de jogo
+                end_game_handler(data, INVALID_MAP);
         }
         else
         {
@@ -19,6 +19,8 @@ void    start_window(data_t *data)
                 data->xy.y = data->grid.height * SPRITES;
                 data->mlx_window = mlx_new_window(data->mlx_connection,
                 data->xy.x, data->xy.y, WINDOW_NAME);
+                if (!data->mlx_window == NULL )
+                        end_game_handler(data, WINDOW_ERROR);
         }
 }
 

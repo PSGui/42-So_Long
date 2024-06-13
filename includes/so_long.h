@@ -1,8 +1,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "mlx.h"
-#include "libft.h"
+#include "../mlx/mlx.h"
+#include "../libft/libft.h"
 
 #include <stdbool.h>
 #include <fcntl.h>
@@ -55,6 +55,11 @@ void    check_sprites(data_t *data, int y, int x);
 
 // Hook_handler
 
+void    hook(data_t *data, int action, int mask, int (*f)());
+void    key_pressed(int key_numeral, data_t *data);
+void    close_it(data_t *data);
+void    retore_game(data_t *data);
 
+// Movements
 
 #endif

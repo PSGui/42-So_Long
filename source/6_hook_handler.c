@@ -1,5 +1,5 @@
-#include "so_long_utils.h"
-#include "so_long.h"
+#include "../includes/so_long_utils.h"
+#include "../includes/so_long.h"
 
 void    hook(data_t *data, int action, int mask, int (*f)())
 {
@@ -10,7 +10,7 @@ void    key_pressed(int key_numeral, data_t *data)
 {
         data->player.mem = 0;
         if (key_numeral == ESC)
-		// Funcao para terminar o jogo e fechar a janela
+		end_game_handler(data, ESC_PRESSED);
 	else if (key_numeral == UP)
 		go_up(data);
 	else if (key_numeral == DOWN)
@@ -33,7 +33,7 @@ void    close_it(data_t *data)
 	exit (0);
 }
 
-void    retore_game(data_t *data)
+void    restore_game(data_t *data)
 {
         if (data)
 	{

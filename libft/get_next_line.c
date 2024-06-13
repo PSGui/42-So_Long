@@ -9,7 +9,7 @@
 /*   Updated: 2023/10/27 15:39:23 by gsaladri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*ft_open(int fd, char *pointer)
 {

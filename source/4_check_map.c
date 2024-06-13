@@ -1,7 +1,7 @@
-#include "so_long_utils.h"
-#include "so_long.h"
+#include "../includes/so_long_utils.h"
+#include "../includes/so_long.h"
 
-void    check_map_lines_1by1(data_t *data)
+void    check_map(data_t *data)
 {
         axis_t  axis;
 
@@ -23,15 +23,15 @@ void    check_map_errors(data_t *data, int y, int x)
 {
 	if (!walls(data, y, x))
 	{
-		//Funcao para acabar o jogo
+		end_game_handler(data, INVALID_MAP);
 	}
 	else if (!rectangular(data))
 	{
-		//Funcao para acabar o jogo
+		end_game_handler(data, INVALID_MAP);
 	}
 	else if (!valid_game_element(data, y, x))
 	{
-		//Funcao para acabar o jogo
+		end_game_handler(data, INVALID_ELEMENT);
 	}
 	place_sprites(data, y, x);
 	return ;

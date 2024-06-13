@@ -1,7 +1,7 @@
-#include "so_long_utils.h"
-#include "so_long.h"
+#include "../includes/so_long_utils.h"
+#include "../includes/so_long.h"
 
-void    get_sprite_image(data_t *data)
+void    load_images(data_t *data)
 {
         data->player = load_sprite(data->mlx_connection, PLAYER_PATH);
         data->collectible = load_sprite(data->mlx_connection, COLLECTIBLE_PATH);

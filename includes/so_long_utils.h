@@ -17,6 +17,14 @@
 # define NO_EVENT_MASK		0
 # define EXPOSURE_MASK		32768
 
+// Defining game ending events to make life easier when closing the game
+
+# define INVALID_MAP 10
+# define CONNECTION_ERROR 20
+# define WINDOW_ERROR 30
+# define INVALID_ELEMENT 40
+# define ESC_PRESSED 50
+
 // Defining the window name and the size of the sprites (32x32)
 
 # define WINDOW_NAME	"./so_long"
@@ -57,6 +65,14 @@ typedef struct
 	int		movements;
 }	sprite_t;
 
+// Structure keeping track of where we are in the 2D dimension
+
+typedef struct
+{
+        int     x;
+        int     y;
+}       axis_t;
+
 // Main structure that is used in almost every function, nesting other structures
 
 typedef struct
@@ -73,13 +89,5 @@ typedef struct
         sprite_t	collectible;
         sprite_t	exit;
 }       data_t;
-
-// Structure keeping track of where we are in the 2D dimension
-
-typedef struct
-{
-        int     x;
-        int     y;
-}       axis_t;
 
 #endif

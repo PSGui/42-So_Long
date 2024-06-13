@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	ft_unsigned(unsigned int n, int *contagem)
 {
-	if (n > 4294967295)
+	if (n > 4294967294)
 		return ;
 	if (n >= 10)
 	{
