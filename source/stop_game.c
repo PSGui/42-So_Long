@@ -5,9 +5,8 @@ void    end_game_handler(data_t *data, int cause)
 {
         if (cause == INVALID_MAP || cause == WINDOW_ERROR)
         {
-                ft_printf("Invalid map / Error creating the window!");
+                ft_printf("Invalid map / Error creating the window!\n");
                 free_map(data);
-                mlx_destroy_window(data->mlx_connection, data->mlx_window);
         }
         else if (cause == CONNECTION_ERROR)
         {
@@ -33,9 +32,9 @@ void    destroy_images(data_t *data)
         mlx_destroy_image(data->mlx_connection, data->collectible.ptr);
         mlx_destroy_image(data->mlx_connection, data->player.ptr);
         mlx_destroy_image(data->mlx_connection, data->exit.ptr);
-        mlx_destroy_window(data->mlx_connection, data->mlx_window);
+        if (data->mlx_window)
+                mlx_destroy_window(data->mlx_connection, data->mlx_window);
         mlx_destroy_display(data->mlx_connection);
-        free(data);
 }
 void	free_map(data_t	*data)
 {
@@ -45,6 +44,5 @@ void	free_map(data_t	*data)
 		data->grid.height--;
 	}
 	free(data->grid.map);
-        free(data);
 	return ;
 }

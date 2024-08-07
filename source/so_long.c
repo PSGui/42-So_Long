@@ -17,9 +17,9 @@ void    start_game(data_t *data, char *map_path)
         start_window(data);
         load_images(data);
         check_map(data);
-        //hook(data, KEY_RELEASE, KEY_RELEASE_MASK, key_pressed);
-        //hook(data, DESTROY_NOTIFY, NO_EVENT_MASK, close_it);
-        //hook(data, EXPOSE, EXPOSURE_MASK, restore_game);
+        hook(data, KEY_RELEASE, KEY_RELEASE_MASK, key_pressed);
+        hook(data, DESTROY_NOTIFY, NO_EVENT_MASK, close_it);
+        // hook(data, EXPOSE, EXPOSURE_MASK, restore_game);
         mlx_loop(data->mlx_connection);
         free(data);
 }
@@ -28,6 +28,7 @@ int     main(int argc, char *argv[])
 {
         data_t data;
 
+        ft_bzero(&data, sizeof(data_t));
         if (argc != 2)
         {
                 ft_printf("Error! Make sure the input looks like this: ./so_long <map_name>.ber");

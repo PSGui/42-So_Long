@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaladri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 13:22:45 by gsaladri          #+#    #+#             */
-/*   Updated: 2024/07/24 13:22:49 by gsaladri         ###   ########.fr       */
+/*   Created: 2024/07/24 13:22:33 by gsaladri          #+#    #+#             */
+/*   Updated: 2024/07/24 13:22:38 by gsaladri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
+char    *ft_strcpy(char *dest, const char *src)
 {
-        size_t	i;
+        size_t      i;
 
-	i = 0;
-	while (i < n && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+        i = 0;
+        while (src[i] != '\0')
+        {
+                dest[i] = src[i];
+                i++;
+        }
+        return (dest);
 }

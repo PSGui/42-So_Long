@@ -29,24 +29,27 @@ void    read_map_file(data_t *data, int fd)
         char    *str;
 
         str = ft_strdup("");
-        data->dim.height = 0;
-        while (fd)
+        while (1)
         {
-                data->dim.line_read = get_next_line(fd);
-                if (data->dim.height == 0)
-                        break ;
-                str = reconstruct_map(str, data->dim.line_read);
-                free(data->dim.line_read);
-                data->dim.height++;
+                data->grid.line_read = get_next_line(fd);
+                if (data->grid.line_read == NULL)
+                        break;
+                str = reconstruct_map(str, data->grid.line_read);
+                data->grid.height++;
         }
         object_counter(data, str);
+        ft_printf("read_map_file: %s\n", str);
         data->grid.map = ft_split(str, '\n');
+        // for (int i = 0 ; data->grid.map[i]; i++)
+        //         ft_printf("Map: '%s'", data->grid.map[i]);
+        // ft_printf("Map: NULL\n");
         if ((height_equals_lines_check(data)) != 0)
         {
                 ft_printf("Error while reading map file. Please try again or provide a different map");
                 free(str);
                 return ;
         }
+        data->grid.width = ft_strlen(data->grid.map[0]);
         free(str);
         return ;
 }
@@ -60,16 +63,19 @@ char    *reconstruct_map(char *s1, char *s2)
 
         if (s1 == NULL || s2 == NULL)
                 return NULL;
-        len1 = strlen(s1);
-        len2 = strlen(s2);
+        len1 = ft_strlen(s1);
+        len2 = ft_strlen(s2);
         new_len = len1 + len2;
-        new_str = malloc(new_len + 1);
+        new_str = ft_calloc(new_len + 1, sizeof(char));
         if (new_str == NULL)
                 return (NULL);
-        strcpy(new_str, s1);
-        strcat(new_str, s2);
+        // ft_printf("reconstruct_map - s1: '%s'\n", s1);     
+        // ft_printf("reconstruct_map - s2: '%s'\n", s2);    
+        new_str = ft_strcpy(new_str, s1);
+        ft_strlcat(new_str, s2, new_len + 1);
         free(s1);
         free(s2);
+        // ft_printf("reconstruct_map: %s\n", new_str);
         return (new_str);
 }
 
@@ -78,11 +84,11 @@ void     object_counter(data_t *data, char *map_string)
         int     i;
 
         i = 0;
-        if (data->dim.height <= 2)
+        if (data->grid.height <= 2)
         {
                 free(map_string);
-                ft_printf("Invalid map type. Make sure it has at least 3 lines!");
-                //end_game_handler(data, INVALID_MAP);
+                ft_printf("Invalid map type. Make sure it has at least 3 lines!\n");
+                end_game_handler(data, INVALID_MAP);
         }
         while(map_string[i] != '\0')
         {
@@ -100,8 +106,8 @@ void     object_counter(data_t *data, char *map_string)
 
 void    check_counter_values(data_t *data, char *map_string)
 {
-        if (!(data->i.collectible > 0 && data->i.exit == 1 &&
-        data->i.player_start == 1 && data->i.free_space > 0))
+        if (data->i.collectible <= 0 && data->i.exit != 1 &&
+                data->i.player_start != 1)
         {
                 free(map_string);
                 //end_game_handler(data, INVALID_MAP);
@@ -113,11 +119,13 @@ int     height_equals_lines_check(data_t *data)
         int     i;
 
         i = 0;
-        while (data->dim.map[i] != NULL)
+        while (data->grid.map[i] != NULL)
         {
+                ft_printf("height_equals_lines_check: '%s'\n", data->grid.map[i]);
                 i++;
         }
-        if (data->dim.height != i - 1)
+        ft_printf("height_equals_lines_check - height: '%d'\n", data->grid.height);
+        if (data->grid.height != i)
         {
                 return (ERROR);
         }

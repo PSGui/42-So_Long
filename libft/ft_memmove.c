@@ -35,5 +35,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-// Basicamente tem o mesmo funcionamento que a memcpy no entanto tem atenção ao overlap das memórias //

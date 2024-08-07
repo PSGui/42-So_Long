@@ -30,5 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-// Copia dois blocos de memória até ao valor dado por size_t 'n' - Similar à strcpy //

@@ -8,13 +8,6 @@ void    load_images(data_t *data)
         data->wall = load_sprite(data->mlx_connection, WALL_PATH);
         data->floor = load_sprite(data->mlx_connection, FLOOR_PATH);
         data->exit = load_sprite(data->mlx_connection, EXIT_PATH);
+
         return ;
-}
-
-sprite_t        load_sprite(void *ptr, char *path)
-{
-        sprite_t        sprite;
-
-        sprite.ptr = mlx_xpm_file_to_image(ptr, path, &sprite.x, &sprite.y);
-        return (sprite);
 }

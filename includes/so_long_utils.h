@@ -79,7 +79,6 @@ typedef struct
 {
 	void		*mlx_connection; // MLX pointer
 	void		*mlx_window; // MLX window pointer
-        drawmap_t       dim;
         drawmap_t       grid;
         objcount_t      i;
         axis_t          xy;

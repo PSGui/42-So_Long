@@ -34,6 +34,7 @@ static char	*ft_open(int fd, char *pointer)
 		pointer = ft_strjoin(pointer, buff);
 	}
 	free(buff);
+	// ft_printf("GNL '%s'\n", pointer);
 	return (pointer);
 }
 
@@ -100,27 +101,28 @@ char	*get_next_line(int fd)
 		return (NULL);
 	pointer = ft_open(fd, pointer);
 	if (!pointer)
-	{
 		return (NULL);
-	}
 	linha = ft_line_trim(pointer);
+	// ft_printf("GNL linha '%s'\n", linha);
 	pointer = ft_pointer_update(pointer);
+	// ft_printf("GNL pointer '%s'\n", pointer);
 	return (linha);
 }
 
-int	main(void)
-{
-	int	fd = open("file1.txt", O_RDONLY);
-	char	*line1;
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*line1;
 
-	if (fd < 0)
-		return (0);
-	while ((line1 = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line1);
-		free(line1);
-	}
-	close(fd);
-	return (0);
-}
+// 	fd = open("file1.txt", O_RDONLY);
+// 	if (fd < 0)
+// 		return (0);
+// 	while ((line1 = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line1);
+// 		free(line1);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
 

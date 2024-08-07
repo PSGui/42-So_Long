@@ -6,7 +6,7 @@ void    hook(data_t *data, int action, int mask, int (*f)())
         mlx_hook(data->mlx_window, action, mask, f, data);
 }
 
-void    key_pressed(int key_numeral, data_t *data)
+int    key_pressed(int key_numeral, data_t *data)
 {
         data->player.mem = 0;
         if (key_numeral == ESC)
@@ -19,10 +19,10 @@ void    key_pressed(int key_numeral, data_t *data)
 		go_left(data);
 	else if (key_numeral == RIGHT)
 		go_right(data);
-	return ;
+	return 0;
 }
 
-void    close_it(data_t *data)
+int    close_it(data_t *data)
 {
         if (data)
 	{

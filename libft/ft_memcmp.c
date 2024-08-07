@@ -31,5 +31,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-// Compara dois blocos de memória até size_t 'n' e retorna -1, 1 ou 0 - Similar à funcao strcmp //

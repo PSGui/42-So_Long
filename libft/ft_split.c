@@ -110,6 +110,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	elementos = ft_splitcount(s, c);
+	ft_printf("ft_split: elementos - %d\n", elementos);
 	mem = (char **)malloc((elementos + 1) * sizeof(char *));
 	if (!mem)
 		return (0);
@@ -124,5 +125,8 @@ char	**ft_split(char const *s, char c)
 		i++;
 	}
 	ft_string_fill(mem, s, c);
+	// for (int i = 0 ; mem[i]; i++)
+	// 	ft_printf("Mem: '%s'", mem[i]);
+        // ft_printf("Map: NULL\n");
 	return (mem);
 }
