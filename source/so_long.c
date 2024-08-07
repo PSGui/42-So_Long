@@ -1,6 +1,29 @@
 #include "../includes/so_long_utils.h"
 #include "../includes/so_long.h"
 
+bool	check_ber_file(const char *map_name)
+{
+	char	*string;
+
+	string = ft_strrchr(map_name, '.');
+	if (string)
+		return (ft_strcmp(string, ".ber") == 0);
+	return (false);
+}
+
+void    start_game(data_t *data, char *map_path)
+{
+        start_map(data, map_path);
+        start_window(data);
+        load_images(data);
+        check_map(data);
+        //hook(data, KEY_RELEASE, KEY_RELEASE_MASK, key_pressed);
+        //hook(data, DESTROY_NOTIFY, NO_EVENT_MASK, close_it);
+        //hook(data, EXPOSE, EXPOSURE_MASK, restore_game);
+        mlx_loop(data->mlx_connection);
+        free(data);
+}
+
 int     main(int argc, char *argv[])
 {
         data_t data;
@@ -23,27 +46,4 @@ int     main(int argc, char *argv[])
                 }
         }
         return (0);
-}
-
-bool	check_ber_file(const char *map_name)
-{
-	char	*string;
-
-	string = ft_strrchr(map_name, '.');
-	if (string)
-		return (ft_strcmp(string, ".ber") == 0);
-	return (false);
-}
-
-void    start_game(data_t *data, char *map_path)
-{
-        start_map(data, map_path);
-        start_window(data);
-        load_images(data);
-        check_map(data);
-        //hook(data, KEY_RELEASE, KEY_RELEASE_MASK, key_pressed);
-        //hook(data, DESTROY_NOTIFY, NO_EVENT_MASK, close_it);
-        //hook(data, EXPOSE, EXPOSURE_MASK, restore_game);
-        mlx_loop(data->mlx_connection);
-        free(data);
 }

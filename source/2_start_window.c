@@ -5,23 +5,23 @@ void    start_window(data_t *data)
 {
         data->mlx_connection = mlx_init();
         if (data->mlx_connection == NULL)
-                end_game_handler(data, CONNECTION_ERROR);
-        if (invalid_game_plot(data))
+                //end_game_handler(data, CONNECTION_ERROR);
+        /*if (invalid_game_plot(data))
         {
                 free_map(data);
                 mlx_destroy_display(data->mlx_connection);
                 free(data->mlx_connection);
-                end_game_handler(data, INVALID_MAP);
+                //end_game_handler(data, INVALID_MAP);
         }
-        else
-        {
+        else*/
+        //{
                 data->xy.x = data->grid.width * SPRITES;
                 data->xy.y = data->grid.height * SPRITES;
                 data->mlx_window = mlx_new_window(data->mlx_connection,
                 data->xy.x, data->xy.y, WINDOW_NAME);
-                if ((!data->mlx_window) == NULL)
-                        end_game_handler(data, WINDOW_ERROR);
-        }
+                //if ((!data->mlx_window) == NULL)
+                        //end_game_handler(data, WINDOW_ERROR);
+       // }
 }
 
 bool	invalid_game_plot(data_t *data)

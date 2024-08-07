@@ -33,7 +33,7 @@ void    read_map_file(data_t *data, int fd)
         while (fd)
         {
                 data->dim.line_read = get_next_line(fd);
-                if (data->dim.height == NULL)
+                if (data->dim.height == 0)
                         break ;
                 str = reconstruct_map(str, data->dim.line_read);
                 free(data->dim.line_read);
@@ -82,7 +82,7 @@ void     object_counter(data_t *data, char *map_string)
         {
                 free(map_string);
                 ft_printf("Invalid map type. Make sure it has at least 3 lines!");
-                end_game_handler(data, INVALID_MAP);
+                //end_game_handler(data, INVALID_MAP);
         }
         while(map_string[i] != '\0')
         {
@@ -93,7 +93,7 @@ void     object_counter(data_t *data, char *map_string)
                 else if (map_string[i++] == 'E')
                         data->i.exit++;
                 else if (map_string[i++] == 'P')
-                        data->i.player_start;
+                        data->i.player_start++;
         }
         check_counter_values(data, map_string); //Verify the ammount of objects in the map. We pass "map_string" as an argument to free it in case of an error!
 }
@@ -104,7 +104,7 @@ void    check_counter_values(data_t *data, char *map_string)
         data->i.player_start == 1 && data->i.free_space > 0))
         {
                 free(map_string);
-                end_game_handler(data, INVALID_MAP);
+                //end_game_handler(data, INVALID_MAP);
         }
 }
 

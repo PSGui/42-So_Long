@@ -12,8 +12,8 @@ INCLUDES = -I/usr/include -Imlx
 
 all:  $(MLX_LIB) $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
+$(NAME): $(LIBFT)
+	$(CC) -o $(NAME) $(LIBFT) $(MLX_FLAGS)
 
 $(MLX_LIB):
 	@make -C $(MLX_DIR)
@@ -21,8 +21,8 @@ $(MLX_LIB):
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJS): $(SRCS)
-	$(CC) -c $(SRCS) $(INCLUDES)
+#$(OBJS): $(SRCS)
+#$(CC) -c $< -o $@ $(INCLUDES)
 
 clean:
 	$(RM) $(OBJS)
