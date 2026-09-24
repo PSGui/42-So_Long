@@ -1,42 +1,8 @@
-<p align="center">
-  <img src="docs/banner.svg" alt="so_long — a 2D graphics project in C, with a blueprint of the included map" width="100%">
-</p>
-
-<p align="center">
-  <strong>A small map. A first step into graphics programming.</strong><br>
-  A 42 project exploring C, MiniLibX, X11 events and tile-based rendering.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/language-C-5b8def?style=flat-square" alt="Language: C">
-  <img src="https://img.shields.io/badge/graphics-MiniLibX-65d6ad?style=flat-square" alt="Graphics: MiniLibX">
-  <img src="https://img.shields.io/badge/platform-Linux%20%2F%20X11-94a3b8?style=flat-square" alt="Platform: Linux / X11">
-  <img src="https://img.shields.io/badge/status-in%20development-e8b86d?style=flat-square" alt="Status: in development">
-</p>
-
-<p align="center">
-  <a href="#overview">Overview</a> ·
-  <a href="#getting-started">Getting started</a> ·
-  <a href="#map-format">Map format</a> ·
-  <a href="#project-structure">Project structure</a> ·
-  <a href="#development-status">Development status</a>
-</p>
-
-## Overview
+# so_long
 
 **so_long** is a learning project built around a simple 2D game: navigate a map, collect every item and reach the exit. The implementation uses **C** and **MiniLibX**, with a bundled `libft` for string handling, memory utilities, formatted output and line-by-line file reading.
 
 The current version focuses on loading `.ber` maps, opening an X11 window and drawing XPM sprites on a **32 × 32 pixel grid**. Movement and the complete gameplay loop are still under development.
-
-### Engineering focus
-
-| Area | Work represented in the code |
-| --- | --- |
-| File parsing | Read a map with `get_next_line` and build a two-dimensional character grid. |
-| Graphics | Load XPM textures and translate map coordinates into window coordinates. |
-| Event handling | Register keyboard and window-close callbacks through MiniLibX. |
-| Program structure | Separate map loading, window setup, image loading, drawing and input handling. |
-| Resource management | Work with dynamic memory, file descriptors and graphics resources; cleanup still needs refinement. |
 
 ## Getting started
 
@@ -66,7 +32,7 @@ make
 
 Run the executable **from the repository root**, because sprite paths are relative to that directory. The expected invocation takes exactly one map file ending in `.ber`.
 
-> This is a development version. Launching is intended to display the map; it does not yet provide a playable collect-and-exit game. A graphical X11 session is required, including when using WSL or a remote Linux machine.
+When using WSL or a remote Linux machine, an accessible X11 display is also required.
 
 ### Make targets
 
@@ -111,7 +77,7 @@ The included [sample map](maps_example/teste.ber) is **11 columns × 8 rows**:
 11111111111
 ```
 
-For the intended game, maps should have equal-length rows, a closed wall boundary, one player, one exit and at least one collectible, with a route to every collectible and the exit. **The current validation does not yet enforce all of these rules reliably.** The header illustration is a schematic of this sample map, not a gameplay screenshot.
+For the intended game, maps should have equal-length rows, a closed wall boundary, one player, one exit and at least one collectible, with a route to every collectible and the exit. **The current validation does not yet enforce all of these rules reliably.**
 
 ## Project structure
 
@@ -124,11 +90,8 @@ For the intended game, maps should have equal-length rows, a closed wall boundar
 | [`maps_example/`](maps_example/) | Sample `.ber` map. |
 | [`libft/`](libft/) | Bundled C utility library. |
 | [`mlx/`](mlx/) | Bundled MiniLibX for Linux / X11. |
-| [`docs/`](docs/) | Repository presentation assets. |
 
 ## Development status
-
-This repository captures a **work in progress**, rather than a completed game.
 
 - [x] Map-file loading and a two-dimensional grid representation.
 - [x] X11 window setup and XPM tile-rendering code.
@@ -146,8 +109,3 @@ The movement functions are currently placeholders. Object counting and map check
 
 </details>
 
----
-
-<p align="center">
-  <a href="https://github.com/PSGui">PSGui</a> · 42 programming project · C / MiniLibX
-</p>
