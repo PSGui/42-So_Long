@@ -1,5 +1,7 @@
 # so_long
 
+![so_long game window](docs/so-long.png)
+
 **so_long** is a learning project built around a simple 2D game: navigate a map, collect every item and reach the exit. The implementation uses **C** and **MiniLibX**, with a bundled `libft` for string handling, memory utilities, formatted output and line-by-line file reading.
 
 The current version focuses on loading `.ber` maps, opening an X11 window and drawing XPM sprites on a **32 × 32 pixel grid**. Movement and the complete gameplay loop are still under development.
